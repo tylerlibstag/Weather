@@ -60,8 +60,9 @@ function initialWeather(city){
 
 function saveHistory(city){
    
-    var pastHistory = JSON.parse(localStorage.getItem("history"));
+    var pastHistory = localStorage.getItem("history");
    if(pastHistory){
+    pastHistory = JSON.parse(pastHistory)
     pastHistory.push(city);
     // console.log("is working", pastHistory)
     
