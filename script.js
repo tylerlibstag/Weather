@@ -6,7 +6,7 @@ var searchBtn = $("#search-button");
 
 function displayHistory(){
     var history = localStorage.getItem("history");
-    console.log(history);
+    
     if(history){
     history = JSON.parse(history);
     for(var i = 0; i < history.length; i++){
@@ -66,13 +66,9 @@ function saveHistory(city){
     // console.log("is working", pastHistory)
     
     var strHistory = JSON.stringify(pastHistory);
-   } else{
-       strHistory=[]
-   }
+   
     localStorage.setItem("history", strHistory);
-    
-    console.log("is working" + strHistory)
-
+   } 
 }
 
 function uvIndex(lat, lon) {
