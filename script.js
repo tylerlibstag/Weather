@@ -6,6 +6,7 @@ var searchBtn = $("#search-button");
 
 function displayHistory(){
     var history = localStorage.getItem("history");
+    console.log(history);
     if(history){
     history = JSON.parse(history);
     for(var i = 0; i < history.length; i++){
