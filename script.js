@@ -6,13 +6,13 @@ var searchBtn = $("#search-button");
 
 function displayHistory(){
     var history = JSON.parse(localStorage.getItem("history"));
-    console.log("appendto", history);
+    //console.log("appendto", history);
     for(var i = 0; i < history.length; i++){
         var hBtn = $("<button>").text(history[i]).attr("class", "history-search");
         $(".history").append(hBtn);
     }
 }
-displayHistory();
+//displayHistory();
 
 searchBtn.on("click", function (e) {
     var city = $("#search-value").val();
