@@ -6,15 +6,17 @@ var searchBtn = $("#search-button");
 
 function displayHistory(){
     var history = JSON.parse(localStorage.getItem("history"));
-    //console.log("appendto", history);
+    if(history){
+    console.log("display working", history);
     for(var i = 0; i < history.length; i++){
         var hBtn = $("<button>").text(history[i]).attr("class", "history-search");
         $(".history").append(hBtn);
     }
 }
-//displayHistory();
+}
+displayHistory();
 
-searchBtn.on("click", function (e) {
+searchBtn.on("click", function (city) {
     var city = $("#search-value").val();
     initialWeather(city)
 });
@@ -58,14 +60,18 @@ function initialWeather(city){
 function saveHistory(city){
    
     var pastHistory = JSON.parse(localStorage.getItem("history"));
-   
+   if(pastHistory){
     pastHistory.push(city);
-    console.log("is working", pastHistory)
+    // console.log("is working", pastHistory)
     
     var strHistory = JSON.stringify(pastHistory);
+   } else{
+       strHistory=[]
+   }
     localStorage.setItem("history", strHistory);
     
     console.log("is working" + strHistory)
+
 }
 
 function uvIndex(lat, lon) {
