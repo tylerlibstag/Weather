@@ -74,6 +74,7 @@ function saveHistory(city){
    
     localStorage.setItem("history", pastHistory);
    } else{
+    localStorage.clear();
     var newEntry = [city]
     localStorage.setItem("history", JSON.stringify(newEntry));
    }
