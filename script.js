@@ -8,12 +8,12 @@ function displayHistory(){
     var history = localStorage.getItem("history");
     
     if(history !== null){
-    //history = JSON.parse(history);
-    for(var i = 0; i < history.length; i++){
-        var hBtn = $("<button>").text(history[i]).attr("class", "history-search");
-        $(".history").append(hBtn);
+    history = JSON.parse(history);
+        for(var i = 0; i < history.length; i++){
+            var hBtn = $("<button>").text(history[i]).attr("class", "history-search");
+            $(".history").append(hBtn);
+        }
     }
-}
 }
 displayHistory();
 
@@ -61,17 +61,21 @@ function initialWeather(city){
 function saveHistory(city){
    
     var pastHistory = localStorage.getItem("history");
-    console.log("is working", pastHistory)
-   if(pastHistory !== null){
+    console.log("is before if statement", pastHistory)
+   if(pastHistory !== null ){
+    console.log("early mid if", typeof pastHistory)
     pastHistory = JSON.parse(pastHistory)
-    pastHistory.push(city);
-    // console.log("is working", pastHistory)
+    console.log("mid if", typeof pastHistory)
+    pastHistory.push(city)
+    pastHistory = JSON.stringify(pastHistory);
+    console.log("after if", pastHistory)
     
 
    
     localStorage.setItem("history", pastHistory);
    } else{
-    localStorage.setItem("history", []);
+    var newEntry = [city]
+    localStorage.setItem("history", JSON.stringify(newEntry));
    }
 }
 
